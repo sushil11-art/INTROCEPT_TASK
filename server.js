@@ -13,9 +13,6 @@ app.use(cors());
 
 // body parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-
 
 // ***** importing routess ****
 const user = require("./routes/user");
