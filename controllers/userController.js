@@ -3,7 +3,7 @@ const { validationResult } = require("express-validator");
 const csvwriter=require("csv-writer")
 var createCsvWriter = csvwriter.createObjectCsvWriter
 
-// Passing the column names intp the module
+// Passing the column names into the module
 const csvWriter = createCsvWriter({
   
   // Output csv file name is info.csv
@@ -22,46 +22,25 @@ const csvWriter = createCsvWriter({
 
 exports.addInfo=async(req,res,body)=>{
     try{
-
-        const results = [
-  {
-    name: 'Sravan Kumar Gottumukkala',
-    email: 'phuyalsushil1189@gmail.com',
-    address:'Kathmandu',
-    nationality:'Neplai',
-    dob:'2055/02/04',
-    education:'Bachelor'
-  },
-   
-];
+        const{name,email,address,nationality,dob,education}=req.body
+        console.log(name);
+        const info=[{
+            name:name,
+            email:email,
+            address:address,
+            nationality:nationality,
+            dob:dob,
+            education:education
+        }]
+        console.log(info);
 // Writerecords function to add records
 csvWriter
-  .writeRecords(results)
+  .writeRecords(info)
   .then(()=> console.log('Data uploaded into csv successfully'));
-     // const {name,gender,email,address,nationality,dob,education}=req.body;
-
     }
     catch(err){
-
         console.log(err)
 
     }
 
 }
-
-
-/* 
-
-
-    Name
-    Gender
-    Phone
-    Email
-    Address
-    Nationality
-    Date of birth
-    Education background
-    Preferred mode of contact (select one from email, phone, none)
-
-
-*/
