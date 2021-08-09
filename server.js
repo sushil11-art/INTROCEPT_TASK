@@ -24,8 +24,6 @@ const user = require("./routes/user");
 // ***** using user routes ***// 
 app.use("/api/user", user);
 
-
-
-console.log("api is running on port 4000")
+// *** to run api in port 4000 ****//
 app.listen(4000);
 
