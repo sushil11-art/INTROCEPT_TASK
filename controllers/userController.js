@@ -12,7 +12,7 @@ const csvWriter = createCsvWriter({
     { id: "email", title: "EMAIL" },
     { id: "address", title: "ADDRESS" },
     { id: "nationality", title: "NATIONALITY" },
-    { id: "dob", title: "DATE OF BIRTH" },
+    { id: "dob", title: "DATE" },
     { id: "education", title: "EDUCATION" },
   ],
 });
@@ -60,10 +60,10 @@ exports.getInfo = async (req, res, next) => {
   try {
     if (fs.existsSync("info.csv")) {
       const users = await readFile();
-      return res.status(400).json({ users });
-    }
+      console.log(users);
+      return res.json(users);    }
     const users = [];
-    return res.status(400).json({ users });
+    return res.json(users);
   } catch (err) {
     return res.status(500).send("Server error");
   }
@@ -78,10 +78,10 @@ exports.getInfoEmail = async (req, res, next) => {
     if (fs.existsSync("info.csv")) {
       const data = await readFile();
       const user = await data.filter((u) => u.EMAIL == email.toString());
-      return res.status(400).json({ user});
+      return res.json(user);
     }
     const user = [];
-    return res.status(400).json({ user });
+    return res.json(user);
   } catch (err) {
     return res.status(500).send("Server error");
   }

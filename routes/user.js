@@ -3,6 +3,9 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const { addInfo, getInfo, getInfoEmail } = require("../controllers/userController");
 
+
+// *** route to post user information *****//
+
 router.post(
   "/add-info",
   [
@@ -19,7 +22,11 @@ router.post(
 );
 
 
+// *** route to get all user information *****//
 router.get("/get-info",getInfo)
+
+
+// *** route to get user information with email *****//
 
 router.get("/get-info/:email",getInfoEmail)
 
