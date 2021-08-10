@@ -17,6 +17,7 @@ const csvWriter = createCsvWriter({
   ],
 });
 
+// **** adding user info ***//
 exports.addInfo = async (req, res, body) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -24,13 +25,15 @@ exports.addInfo = async (req, res, body) => {
   }
   const { name, email, address, nationality, dob, education } = req.body;
   if (fs.existsSync("info.csv")) {
-        const results =await readFile();
-        const findIndex=await results.findIndex(u=>u.EMAIL==email.toString())
-        if (findIndex>=0){
-        return res
+    const results = await readFile();
+    const findIndex = await results.findIndex(
+      (u) => u.EMAIL == email.toString()
+    );
+    if (findIndex >= 0) {
+      return res
         .status(400)
         .json({ errors: [{ msg: " User with that email already exists" }] });
-        }
+    }
   }
   try {
     const info = [
@@ -51,17 +54,50 @@ exports.addInfo = async (req, res, body) => {
 };
 
 
+// ****get info of all user ****//
+
+exports.getInfo = async (req, res, next) => {
+  try {
+    if (fs.existsSync("info.csv")) {
+      const users = await readFile();
+      return res.status(400).json({ users });
+    }
+    const users = [];
+    return res.status(400).json({ users });
+  } catch (err) {
+    return res.status(500).send("Server error");
+  }
+};
+
+
+// ***** get info of user with a particular email ***//
+exports.getInfoEmail = async (req, res, next) => {
+  try {
+    let email=req.params.email
+    console.log(email)
+    if (fs.existsSync("info.csv")) {
+      const data = await readFile();
+      const user = await data.filter((u) => u.EMAIL == email.toString());
+      return res.status(400).json({ user});
+    }
+    const user = [];
+    return res.status(400).json({ user });
+  } catch (err) {
+    return res.status(500).send("Server error");
+  }
+};
 
 // *** readFile funtion to read information from csv file  ****
-async function readFile(){
-    const results = [];
-    return new Promise((resolve, reject) => {
-      fs.createReadStream("info.csv")
-        .pipe(csvdata())
-        .on("data", (data) => results.push(data))
-        .on("end", () => {
-          console.log("success");
-          resolve(results);
-        }).on("error",reject);
-    });
+async function readFile() {
+  const results = [];
+  return new Promise((resolve, reject) => {
+    fs.createReadStream("info.csv")
+      .pipe(csvdata())
+      .on("data", (data) => results.push(data))
+      .on("end", () => {
+        console.log("success");
+        resolve(results);
+      })
+      .on("error", reject);
+  });
 }

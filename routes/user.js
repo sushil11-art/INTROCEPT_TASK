@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
-const { addInfo } = require("../controllers/userController");
+const { addInfo, getInfo, getInfoEmail } = require("../controllers/userController");
 
 router.post(
   "/add-info",
@@ -17,5 +17,10 @@ router.post(
   ],
   addInfo
 );
+
+
+router.get("/get-info",getInfo)
+
+router.get("/get-info/:email",getInfoEmail)
 
 module.exports = router;
