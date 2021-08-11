@@ -9,10 +9,10 @@ const UserDetails = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser(email));
-  }, [dispatch]);
+  }, [dispatch,email]);
 
   const { user, loading } = useSelector((state) => state.UserReducer);
-  if (user == undefined && !loading) {
+  if (user === undefined && !loading) {
     return (
       <Container>
         <Alert variant="danger">User with that email not found</Alert>

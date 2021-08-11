@@ -1,10 +1,11 @@
-import {GET_USERS,GET_USER} from "../actions/types";
+import {GET_USERS,GET_USER, ADD_USER} from "../actions/types";
 
 
 const initialState = {
   user: {},
   loading: true,
   users: [],
+  msg:null
 };
 
 
@@ -16,6 +17,8 @@ export default function(state=initialState,action){
       return {...state,users:payload,loading:false}
     case GET_USER:
       return {...state,user:payload[0],loading:false}
+    case ADD_USER:
+      return state
       default:
         return state;
   }

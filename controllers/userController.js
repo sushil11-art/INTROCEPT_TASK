@@ -6,16 +6,16 @@ const csvdata = require("csv-parser");
 const fs = require("fs");
 
 const csvWriter = createCsvWriter({
-  path: "info.csv",
-  header: [
-    { id: "name", title: "NAME" },
-    { id: "email", title: "EMAIL" },
-    { id: "address", title: "ADDRESS" },
-    { id: "nationality", title: "NATIONALITY" },
-    { id: "dob", title: "DATE" },
-    { id: "education", title: "EDUCATION" },
-  ],
-});
+      path: "info.csv",
+      header: [
+        { id: "name", title: "NAME" },
+        { id: "email", title: "EMAIL" },
+        { id: "address", title: "ADDRESS" },
+        { id: "nationality", title: "NATIONALITY" },
+        { id: "dob", title: "DATE" },
+        { id: "education", title: "EDUCATION" },
+      ],
+    });
 
 // **** adding user info ***//
 exports.addInfo = async (req, res, body) => {
@@ -46,6 +46,7 @@ exports.addInfo = async (req, res, body) => {
         education: education,
       },
     ];
+    
     const information = await csvWriter.writeRecords(info);
     return res.json({ msg: "Information uploaded successfully" });
   } catch (err) {
@@ -53,15 +54,14 @@ exports.addInfo = async (req, res, body) => {
   }
 };
 
-
 // ****get info of all user ****//
 
 exports.getInfo = async (req, res, next) => {
   try {
     if (fs.existsSync("info.csv")) {
       const users = await readFile();
-      console.log(users);
-      return res.json(users);    }
+      return res.json(users);
+    }
     const users = [];
     return res.json(users);
   } catch (err) {
@@ -69,12 +69,11 @@ exports.getInfo = async (req, res, next) => {
   }
 };
 
-
 // ***** get info of user with a particular email ***//
 exports.getInfoEmail = async (req, res, next) => {
   try {
-    let email=req.params.email
-    console.log(email)
+    let email = req.params.email;
+    console.log(email);
     if (fs.existsSync("info.csv")) {
       const data = await readFile();
       const user = await data.filter((u) => u.EMAIL == email.toString());
@@ -95,7 +94,6 @@ async function readFile() {
       .pipe(csvdata())
       .on("data", (data) => results.push(data))
       .on("end", () => {
-        console.log("success");
         resolve(results);
       })
       .on("error", reject);

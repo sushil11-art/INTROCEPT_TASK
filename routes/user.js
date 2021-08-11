@@ -13,7 +13,7 @@ router.post(
     body("email", "Please enter a valid email").isEmail(),
     body("address", "Please enter a address").not().isEmpty(),
     body("nationality", "Please enter your nationality").not().isEmpty(),
-    body("dob", "Please enter your date of birth").not().isEmpty(),
+    body("dob", "Please enter your date of birth").not().isEmpty().isISO8601('yyyy-mm-dd'),
     body("education", "Mention your education with comma separted format")
       .not()
       .isEmpty(),
