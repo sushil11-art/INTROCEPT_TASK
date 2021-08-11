@@ -36,7 +36,7 @@ npm install redux-thunk
 npm install redux-devtools-extension
 # Working with redux may be quite intimidating with fancy terminologies like actions, reducers, middleware, store, etc. But Redux DevTools extension can help you a lot in visualizing all the complex events that are happening in a redux application under the hood
 
-****************************************************Packages used in node app*****************************************************************************
+****************************************************Packages used in node app***************************************************************************************
 npm install body-parser
 # Body-parser is the Node.js body parsing middleware. It is responsible for parsing the incoming request bodies in a middleware before you handle it.
 
