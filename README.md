@@ -22,17 +22,16 @@ npm install date-picker
 
 npm install redux
 #Redux is a predictable state container for JavaScript apps.
-It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger.
-You can use Redux together with React, or with any other view library. It is tiny (2kB, including dependencies), but has a large ecosystem of addons available
+#It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger.
+#You can use Redux together with React, or with any other view library. It is tiny (2kB, including dependencies), but has a large ecosystem of addons available
 
 npm install react-redux
-Redux itself is a standalone library that can be used with any UI layer or framework, including React. Although Redux and React are commonly used together, they are independent of each other.React Redux is the official Redux UI binding library for React. 
-If you are using Redux and React together, you should also use React Redux to bind these two libraries.
+#Redux itself is a standalone library that can be used with any UI layer or framework, including React. Although Redux and React are commonly used together, they are independent of each other.React Redux is the official Redux UI binding library for React. 
+#If you are using Redux and React together, you should also use React Redux to bind these two libraries.
 
 npm install redux-thunk
-Redux Thunk is middleware that allows you to return functions, rather than just actions, within Redux. This allows for delayed actions, including working with promises.
-
-One of the main use cases for this middleware is for handling actions that might not be synchronous, for example, using axios to send a GET request. Redux Thunk allows us to dispatch those actions asynchronously and resolve each promise that gets returned.
+#Redux Thunk is middleware that allows you to return functions, rather than just actions, within Redux. This allows for delayed actions, including working with promises.
+#One of the main use cases for this middleware is for handling actions that might not be synchronous, for example, using axios to send a GET request. Redux Thunk allows us to dispatch those actions asynchronously and resolve each promise that gets returned.
 
 npm install redux-devtools-extension
-Working with redux may be quite intimidating with fancy terminologies like actions, reducers, middleware, store, etc. But Redux DevTools extension can help you a lot in visualizing all the complex events that are happening in a redux application under the hood
+#Working with redux may be quite intimidating with fancy terminologies like actions, reducers, middleware, store, etc. But Redux DevTools extension can help you a lot in visualizing all the complex events that are happening in a redux application under the hood
