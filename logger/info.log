@@ -52,3 +52,15 @@
 21-08-11 19:26:12 [32minfo[39m: Allowing express app to use imported routes
 21-08-11 19:26:12 [32minfo[39m: Initializing port to run express app
 21-08-11 19:26:12 [32minfo[39m: Now app will run on port 4000
+{"message":"Applying cors middleware","level":"info","service":"user-service","timestamp":"2021-08-11T13:46:54.708Z"}
+{"message":"Applying parsing middleware","level":"info","service":"user-service","timestamp":"2021-08-11T13:46:54.710Z"}
+{"message":"Now importing user routes","level":"info","service":"user-service","timestamp":"2021-08-11T13:46:54.711Z"}
+{"message":"Allowing express app to use imported routes","level":"info","service":"user-service","timestamp":"2021-08-11T13:46:54.800Z"}
+{"message":"Initializing port to run express app","level":"info","service":"user-service","timestamp":"2021-08-11T13:46:54.800Z"}
+{"message":"Now app will run on port 4000","level":"info","service":"user-service","timestamp":"2021-08-11T13:46:54.801Z"}
+21-08-11 19:35:13 [32minfo[39m: Applying cors middleware
+21-08-11 19:35:13 [32minfo[39m: Applying parsing middleware
+21-08-11 19:35:13 [32minfo[39m: Now importing user routes
+21-08-11 19:35:13 [32minfo[39m: Allowing express app to use imported routes
+21-08-11 19:35:13 [32minfo[39m: Initializing port to run express app
+21-08-11 19:35:13 [32minfo[39m: Now app will run on port 4000
