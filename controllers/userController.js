@@ -69,7 +69,7 @@ exports.getInfo = async (req, res, next) => {
       logger.info("Successfully fetched user information  ");
       return res.json(users);
     }
-    logging.info("No users data in file");
+    logger.info("No users data in file");
     const users = [];
     return res.json(users);
   } catch (err) {
@@ -84,7 +84,7 @@ exports.getInfoEmail = async (req, res, next) => {
     if (fs.existsSync("info.csv")) {
       const data = await readFile();
       const user = await data.filter((u) => u.EMAIL == email.toString());
-      logging.info("Sending json response data with a particular email");
+      logger.info("Sending json response data with a particular email");
       return res.json(user);
     }
     const user = [];
