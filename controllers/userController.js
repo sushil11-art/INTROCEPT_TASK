@@ -4,23 +4,26 @@ const csvwriter = require("csv-writer");
 var createCsvWriter = csvwriter.createObjectCsvWriter;
 const csvdata = require("csv-parser");
 const fs = require("fs");
+const logger = require("../logger");
 
 const csvWriter = createCsvWriter({
-      path: "info.csv",
-      header: [
-        { id: "name", title: "NAME" },
-        { id: "email", title: "EMAIL" },
-        { id: "address", title: "ADDRESS" },
-        { id: "nationality", title: "NATIONALITY" },
-        { id: "dob", title: "DATE" },
-        { id: "education", title: "EDUCATION" },
-      ],
-    });
+  path: "info.csv",
+  header: [
+    { id: "name", title: "NAME" },
+    { id: "email", title: "EMAIL" },
+    { id: "address", title: "ADDRESS" },
+    { id: "nationality", title: "NATIONALITY" },
+    { id: "dob", title: "DATE" },
+    { id: "education", title: "EDUCATION" },
+  ],
+});
 
 // **** adding user info ***//
 exports.addInfo = async (req, res, body) => {
+  logger.info("Validating the provided input data");
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    logger.error("Validation failed");
     return res.status(400).json({ errors: errors.array() });
   }
   const { name, email, address, nationality, dob, education } = req.body;
@@ -30,6 +33,7 @@ exports.addInfo = async (req, res, body) => {
       (u) => u.EMAIL == email.toString()
     );
     if (findIndex >= 0) {
+      logger.warns("Try picking one unique email");
       return res
         .status(400)
         .json({ errors: [{ msg: " User with that email already exists" }] });
@@ -46,7 +50,8 @@ exports.addInfo = async (req, res, body) => {
         education: education,
       },
     ];
-    
+
+    logger.info("Writing validated information in csv files");
     const information = await csvWriter.writeRecords(info);
     return res.json({ msg: "Information uploaded successfully" });
   } catch (err) {
@@ -58,10 +63,13 @@ exports.addInfo = async (req, res, body) => {
 
 exports.getInfo = async (req, res, next) => {
   try {
+    logger.info("Checking if csv file exist to fetch user inforation")
     if (fs.existsSync("info.csv")) {
       const users = await readFile();
+      logger.info("Successfully fetched user information  ")
       return res.json(users);
     }
+    logging.info("No users data in file")
     const users = [];
     return res.json(users);
   } catch (err) {
@@ -73,10 +81,10 @@ exports.getInfo = async (req, res, next) => {
 exports.getInfoEmail = async (req, res, next) => {
   try {
     let email = req.params.email;
-    console.log(email);
     if (fs.existsSync("info.csv")) {
       const data = await readFile();
       const user = await data.filter((u) => u.EMAIL == email.toString());
+      logging.info("Sending json response data with a particular email")
       return res.json(user);
     }
     const user = [];
