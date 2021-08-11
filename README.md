@@ -90,7 +90,8 @@ npm install redux-devtools-extension
 
 # Working with redux may be quite intimidating with fancy terminologies like actions, reducers, middleware, store, etc. But Redux DevTools extension can help you a lot in visualizing all the complex events that are happening in a redux application under the hood
 
-\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***Packages used in node app**\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***
+\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***Packages used in node app**\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\*********************************\*\*\***********************************
+
 npm install body-parser
 
 # Body-parser is the Node.js body parsing middleware. It is responsible for parsing the incoming request bodies in a middleware before you handle it.
@@ -133,7 +134,7 @@ npm install path
 
 # Node.js path module is used for handling and transforming file paths. This module can be imported using the following syntax
 
-**\*\***\*\***\*\***STEPS INVOLVED IN DEPLOYING APPLICATION ****\*\*****\*\*\*\*****\*\*****\*\*\*\*****\*\*****\*\*\*\*****\*\*****
+**\*\***\*\***\*\***STEPS INVOLVED IN DEPLOYING APPLICATION \***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***
 
 # STEP 1:
 
@@ -169,13 +170,10 @@ app.use(express.static("client/build"))
 # 5: We need to add few scripts on the Server package.json files in order to tell Heroku, what to do and what not to.
 
 "scripts": {
-
-    "test": "echo \"Error: no test specified\" && exit 1",
-
-    "start": "node app.js",
-
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-
+"test": "echo \"Error: no test specified\" && exit 1",
+"start": "node server.js",
+"server": "nodemon ./server.js",
+"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
 },
 
 # 6 :6: Remove the git file from the Client side, if there is any
