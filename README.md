@@ -90,7 +90,7 @@ npm install redux-devtools-extension
 
 # Working with redux may be quite intimidating with fancy terminologies like actions, reducers, middleware, store, etc. But Redux DevTools extension can help you a lot in visualizing all the complex events that are happening in a redux application under the hood
 
-\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***Packages used in node app**\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\*********************************\*\*\***********************************
+\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***Packages used in node app**\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***************\*\*****************\*\*\*****************\*\*****************
 
 npm install body-parser
 
@@ -121,6 +121,14 @@ npm install dotenv
 # Environment variables are variables that are set outside of a program, often through a cloud provider or operating system.
 
 # In Node, environment variables are a great way to securely and conveniently configure things that don't change often, like URLs, authentication keys, and passwords.
+
+npm install winston
+
+# winston is designed to be a simple and universal logging library with support for multiple transports. A transport is essentially a storage device for your logs. Each winston logger can have multiple transports (see: Transports) configured at different levels (see: Logging levels). For example, one may want error logs to be stored in a persistent remote location (like a database), but all logs output to the console or a local file.
+
+For more info visit
+
+# https://github.com/winstonjs/winston
 
 npm install csv-parser
 
