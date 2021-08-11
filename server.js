@@ -6,6 +6,9 @@ const cors = require("cors");
 
 const bodyParser = require("body-parser");
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 
 
@@ -23,5 +26,12 @@ const user = require("./routes/user");
 app.use("/api/user", user);
 
 // *** to run api in port 4000 ****//
-app.listen(4000);
+
+const PORT=process.env.PORT || 4000
+
+if (process.env.NODE_ENV=="production"){
+    app.use(express.static("client/build"))
+}
+
+app.listen(PORT);
 
