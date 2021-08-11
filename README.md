@@ -55,3 +55,16 @@ npm install express
 # Defines a routing table which is used to perform different actions based on HTTP Method and URL.
 
 # Allows to dynamically render HTML Pages based on passing arguments to templates.
+
+npm install dotenv
+# Environment variables are variables that are set outside of a program, often through a cloud provider or operating system.
+# In Node, environment variables are a great way to securely and conveniently configure things that don't change often, like URLs, authentication keys, and passwords.
+
+npm install csv-parser
+# This package is a parser converting CSV text input into arrays or objects. It implements the Node.js stream API. It also provides alternative APIs for convenience such as the callback API and sync API. It is both extremely easy to use and powerful.
+
+npm install csv-writer
+# Convert objects/arrays into a CSV string or write them into a file. It respects RFC 4180 for the output CSV format.
+
+npm install path
+# Node.js path module is used for handling and transforming file paths. This module can be imported using the following syntax
