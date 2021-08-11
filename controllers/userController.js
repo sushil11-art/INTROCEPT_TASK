@@ -4,7 +4,7 @@ const csvwriter = require("csv-writer");
 var createCsvWriter = csvwriter.createObjectCsvWriter;
 const csvdata = require("csv-parser");
 const fs = require("fs");
-const logger = require("../logger");
+const logger = require("../logger/index");
 
 const csvWriter = createCsvWriter({
   path: "info.csv",
@@ -63,13 +63,13 @@ exports.addInfo = async (req, res, body) => {
 
 exports.getInfo = async (req, res, next) => {
   try {
-    logger.info("Checking if csv file exist to fetch user inforation")
+    logger.info("Checking if csv file exist to fetch user inforation");
     if (fs.existsSync("info.csv")) {
       const users = await readFile();
-      logger.info("Successfully fetched user information  ")
+      logger.info("Successfully fetched user information  ");
       return res.json(users);
     }
-    logging.info("No users data in file")
+    logging.info("No users data in file");
     const users = [];
     return res.json(users);
   } catch (err) {
@@ -84,7 +84,7 @@ exports.getInfoEmail = async (req, res, next) => {
     if (fs.existsSync("info.csv")) {
       const data = await readFile();
       const user = await data.filter((u) => u.EMAIL == email.toString());
-      logging.info("Sending json response data with a particular email")
+      logging.info("Sending json response data with a particular email");
       return res.json(user);
     }
     const user = [];

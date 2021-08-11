@@ -10,9 +10,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
+
 const logger = require("./logger");
-
-
 
 logger.info("Applying cors middleware")
 
@@ -31,7 +30,6 @@ app.use(bodyParser.urlencoded({extended:true}))
 logger.info("Now importing user routes")
 
 const user = require("./routes/user");
-
 
 // ***** using user routes ***// 
 
