@@ -10,7 +10,6 @@ const AddUserInfo = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     trigger,
   } = useForm();
 
