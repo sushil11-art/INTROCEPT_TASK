@@ -3,3 +3,7 @@ docker run react
 docker run --publish 3000:3000 react
 docker-compose build .
 docker-compose run app
+
+
+docker build -t node-docker .
+docker run -it -p 4000:4000 node-docker
